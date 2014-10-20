@@ -51,7 +51,12 @@ body {
 }
 
 #addBook div {
-	width: 550px;
+	width: 650px;
+}
+
+#bookDetail div {
+    display: block;
+    clear: both;
 }
 
 #addBook div:after {

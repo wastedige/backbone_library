@@ -53,6 +53,12 @@ app.LibraryView = Backbone.View.extend({
 		var bookView = new app.BookView({
 			model: item
 		});
+        bookView.on('mouseover', this.mouseovercard());
 		this.$el.append( bookView.render().el );
-	}
+	},
+
+    mouseovercard: function() {
+        // this.$el.hide();
+
+    }
 });
