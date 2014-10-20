@@ -16,7 +16,8 @@ app.BookView = Backbone.View.extend({
 
 	events: {
 		'click .delete': 'deleteBook',
-        'click': 'detailBook'
+        'mouseenter': 'mouseEnter',
+        'mouseleave': 'mouseExit'
 	},
 
 	deleteBook: function() {
@@ -27,8 +28,13 @@ app.BookView = Backbone.View.extend({
 		this.remove();
 	},
 
-    detailBook: function() {
+    mouseEnter: function() {
+        $('#mytitle', '#bookDetail').text("DETAIL you want?!");
 
+    },
+
+    mouseExit: function() {
+        $('#mytitle', '#bookDetail').text("");
 
     },
 

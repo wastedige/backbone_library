@@ -1,5 +1,8 @@
 var app = app || {};
 
+// lib https://github.com/ShaahinShahbazi/backbone_library.git
+// git push lib gh-pages
+
 app.LibraryView = Backbone.View.extend({
 	el: $( '#books' ),
 
