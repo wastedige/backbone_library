@@ -1,5 +1,5 @@
 var app = app || {};
-
+var tmpl;
 app.BookView = Backbone.View.extend({
 
     tagName: 'div',
@@ -7,8 +7,6 @@ app.BookView = Backbone.View.extend({
 	template: $( '#bookTemplate' ).html(),
     initialize: function(){
         _.bindAll(this, 'render'); // suggested on Oddy Osmani's book -- but does not seem to be doing anything
-
-        //this.listenTo( this.collection, 'add', this.renderBook );
     },
 
     //el: $( '#books' ),
@@ -29,23 +27,31 @@ app.BookView = Backbone.View.extend({
 	},
 
     mouseEnter: function() {
-        $('#mytitle', '#bookDetail').text("DETAIL you want?!");
-
+        $('#title', '#bookDetail').text(this.model.get('title'));
+        $('#author', '#bookDetail').text(this.model.get('author'));
+        $('#keywords', '#bookDetail').text(
+            _.map(this.model.get('keywords'), function(data) {
+                return data.keyword;
+            })
+        );
+        // $('#bookDetail').html( tmpl( this.model.toJSON() ) );
     },
 
     mouseExit: function() {
-        $('#mytitle', '#bookDetail').text("");
+        // I'm sure there's a one-liner way to handle this
+        $('#title', '#bookDetail').text("");
+        $('#author', '#bookDetail').text("");
+        $('#keywords', '#bookDetail').text("");
 
     },
 
 	render: function() {
 		//tmpl is a function that takes a JSON object and returns html
-		var tmpl = _.template( this.template );
+        tmpl = _.template( this.template );
 
 		//this.el is what we defined in tagName. use $el to get access to jQuery html() function
-        //this.$el.html( tmpl( this.model.toJSON() ) );
-        $(this.$el).html( tmpl( this.model.toJSON() ) );
-        $('#mytitle', '#bookDetail').text("BLAH!");
+        this.$el.html( tmpl( this.model.toJSON() ) );
+        $('#mytitle', '#bookDetail').text("");
 		return this;
 	}
 });

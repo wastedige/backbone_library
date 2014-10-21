@@ -1,5 +1,8 @@
 body {
 	background-color: #eee;
+    border: solid;
+    width: 750px;
+    padding: 5px;
 }
 
 .bookContainer {
@@ -55,6 +58,9 @@ body {
 }
 
 #bookDetail div {
+    border: dotted;
+    margin: 5px;
+    padding: 5px;
     display: block;
     clear: both;
 }
